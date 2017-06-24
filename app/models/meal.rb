@@ -2,6 +2,7 @@ class Meal < ActiveRecord::Base
   belongs_to :menu
 
   validates :price, numericality: { greater_than_or_equal_to: 0 }
+  validates :name, presence: true
 
   def price
     self[:price] / 100.0

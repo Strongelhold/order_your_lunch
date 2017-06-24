@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Meal, type: :model do
   let (:meal) { create :meal }
+
   describe 'price' do
     it 'must return calculated price' do
       expect(meal.price).to eq meal[:price] / 100.0
@@ -13,6 +14,13 @@ RSpec.describe Meal, type: :model do
     end
     it 'cant be less than zero' do
       meal.price = -23
+      expect(meal).not_to be_valid
+    end
+  end
+
+  describe 'name' do
+    it 'is present' do
+      meal.name = ''
       expect(meal).not_to be_valid
     end
   end
