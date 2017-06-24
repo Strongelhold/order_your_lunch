@@ -18,9 +18,13 @@ RSpec.describe 'StaticPages', type: :feature do
         fill_in 'Password', with: user.password
         click_button 'Log in'
       end
+
       it 'have "Sing Out" link' do
-        visit root_path
         expect(page).to have_link('Sign Out', href: destroy_user_session_path)
+      end
+
+      it 'have "Edit my profile" link' do
+        expect(page).to have_link('Edit my profile', href: edit_user_registration_path)
       end
     end
   end
