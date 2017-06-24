@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Meal, type: :model do
+  include_examples 'validations', :meal
+
   let (:meal) { create :meal }
 
   describe 'price' do
@@ -18,10 +20,4 @@ RSpec.describe Meal, type: :model do
     end
   end
 
-  describe 'name' do
-    it 'is present' do
-      meal.name = ''
-      expect(meal).not_to be_valid
-    end
-  end
 end
