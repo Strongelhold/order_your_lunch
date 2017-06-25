@@ -1,6 +1,8 @@
 class Menu < ActiveRecord::Base
   has_many :meals
 
+  validates :date, uniqueness: true
+
   scope :for_week, -> (date_in_week = nil) {
     date_in_week = date_in_week || Date.today
     start_of_week = date_in_week.monday

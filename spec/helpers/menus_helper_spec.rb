@@ -11,5 +11,12 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe MenusHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:menu) { create :menu }
+
+  describe '#decorate' do
+    it 'return decorated date with name of day' do
+      decorated = "#{menu.date.strftime('%A')} (#{menu.date.strftime('%d.%m.%Y')})"
+      expect(decorate(menu)).to eq "<a href=\"/menus/#{menu.id}\">#{decorated}</a>"
+    end
+  end
 end
