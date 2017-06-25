@@ -6,7 +6,6 @@ RSpec.describe User, type: :model do
   let(:user) { create :user }
 
   describe 'for first user' do
-
     it 'have admin role' do
       expect(user.admin?).to be true
     end

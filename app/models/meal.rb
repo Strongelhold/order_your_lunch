@@ -4,6 +4,8 @@ class Meal < ActiveRecord::Base
   validates :price, numericality: { greater_than_or_equal_to: 0 }
   validates :name, presence: true
 
+  enum course: %i(starter main drink)
+
   def price
     self[:price] / 100.0
   end

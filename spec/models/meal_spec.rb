@@ -20,4 +20,19 @@ RSpec.describe Meal, type: :model do
     end
   end
 
+  describe 'course' do
+    %i(starter? main? drink?).each do |type|
+      it "respond to #{type} method" do
+        expect(meal).to respond_to(type)
+      end
+    end
+    %i(starter! main! drink!).each do |type|
+      it "#{type} method change 'course' value" do
+        expect(meal).to respond_to(type)
+        meal.public_send(type)
+        expect(meal.course).to eq type.to_s.sub('!','')
+      end
+    end
+  end
+
 end
