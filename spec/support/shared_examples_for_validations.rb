@@ -1,5 +1,5 @@
 RSpec.shared_examples 'validations' do |model|
-  let(:subject) { create model }
+  subject { create model }
 
   describe 'name' do
     it 'is present' do

@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe MenusController, type: :controller do
+  let(:user) { create :user }
 
   describe '#index' do
     context 'if user not signed in' do
@@ -13,7 +14,6 @@ RSpec.describe MenusController, type: :controller do
       end
     end
     context 'if user signed in' do
-      let(:user) { create :user }
 
       before do
         sign_in user
