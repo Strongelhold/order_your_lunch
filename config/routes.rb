@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
-  resources :menus, only: %i(index show)
+  resources :menus, only: %i(index show) do
+    resources :meals, only: :index
+  end
 end

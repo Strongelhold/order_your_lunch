@@ -19,5 +19,9 @@ RSpec.describe 'Meals', type: :feature do
         expect(page).to have_text meal.price
       end
     end
+
+    it 'have "Submit" button' do
+      expect(page).to have_button('Submit')
+    end
   end
 end

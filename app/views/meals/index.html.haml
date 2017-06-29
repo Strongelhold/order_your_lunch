@@ -1,0 +1,11 @@
+%table.table.table-hover#meals
+  - @meals.each do |meal|
+    %tbody
+      %tr.clickable-row
+        %td{style: 'display: none;'}= meal.id
+        %td= meal.name
+        %td= meal.course
+        %td= meal.price
+
+%script{type: 'text/javascript',
+        src: '/javascripts/meals.js'}
