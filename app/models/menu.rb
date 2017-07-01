@@ -1,5 +1,6 @@
 class Menu < ActiveRecord::Base
   has_many :meals
+  has_many :orders
 
   validates :date, uniqueness: true
 

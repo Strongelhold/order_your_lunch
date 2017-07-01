@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :rememberable, :validatable
 
+  has_many :orders
+
   validates :name, presence: true
 
   after_create :make_admin
