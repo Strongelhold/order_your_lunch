@@ -1,5 +1,5 @@
 class MenusController < ApplicationController
-  before_action :require_login
+  before_action :authenticate_user!
 
   def index
     @menus = Menu.for_week
@@ -8,11 +8,5 @@ class MenusController < ApplicationController
   def show
     @menu = Menu.find(params[:id])
     @meals = @menu.meals
-  end
-
-  private
-
-  def require_login
-    redirect_to new_user_session_path unless user_signed_in?
   end
 end
