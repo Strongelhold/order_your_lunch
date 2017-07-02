@@ -8,6 +8,13 @@ RSpec.describe 'StaticPages', type: :feature do
         visit root_path
         expect(page).to have_link('Sign In', href: new_user_session_path)
       end
+      it 'have not "Edit my profile" link' do
+        expect(page).not_to have_link('Edit my profile', href: edit_user_registration_path)
+      end
+
+      it 'have not "Dashboard" link' do
+        expect(page).not_to have_link('Dashboard', href: menus_path)
+      end
     end
 
     context 'if user signed in' do
@@ -25,6 +32,10 @@ RSpec.describe 'StaticPages', type: :feature do
 
       it 'have "Edit my profile" link' do
         expect(page).to have_link('Edit my profile', href: edit_user_registration_path)
+      end
+
+      it 'have "Dashboard" link' do
+        expect(page).to have_link('Dashboard', href: menus_path)
       end
     end
   end

@@ -3,6 +3,9 @@
     .container-fluid
       .navbar-header
         %a.navbar-brand{ href: '#'} OrderYourLunch
+        - if user_signed_in?
+          %ul.nav.navbar-nav
+            %li= link_to 'Dashboard', menus_path
       .collapse.navbar-collapse#bs-example-navbar-collapse-1
         %ul.nav.navbar-nav.navbar-right
           - if user_signed_in?
