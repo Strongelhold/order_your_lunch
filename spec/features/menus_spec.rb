@@ -1,6 +1,4 @@
 RSpec.describe 'Menus', type: :feature do
-  subject { page }
-
   let(:user) { create :user }
   let!(:menu) { create :menu }
   let(:menu_link) { "#{menu.date.strftime('%A')} (#{menu.date.strftime('%d.%m.%Y')})" }

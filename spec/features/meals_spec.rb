@@ -1,6 +1,4 @@
 RSpec.describe 'Meals', type: :feature do
-  subject{ page }
-
   let(:user) { create :user }
   let(:menu) { create :menu }
 

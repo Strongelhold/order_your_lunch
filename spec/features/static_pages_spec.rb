@@ -37,6 +37,12 @@ RSpec.describe 'StaticPages', type: :feature do
       it 'have "Dashboard" link' do
         expect(page).to have_link('Dashboard', href: menus_path)
       end
+
+      context 'and user is admin' do
+        it 'have "Users" link' do
+          expect(page).to have_link('Users', href: users_path)
+        end
+      end
     end
   end
 end

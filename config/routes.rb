@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { sessions: 'users/sessions' }
+  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
 
   root 'static_pages#home'
 
@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :meals, only: :index
   end
 
-  resources :users, only: [] do
+  resources :users, only: [:index, :show] do
     resources :orders, only: :create
   end
 end
