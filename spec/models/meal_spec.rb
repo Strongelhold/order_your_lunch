@@ -35,4 +35,12 @@ RSpec.describe Meal, type: :model do
     end
   end
 
+  describe 'find_by_ids' do
+    let(:meals) { create_list :meal, 3 }
+    it 'return array with meals objects' do
+      ids = meals.map(&:id)
+      expect(Meal.find_by_ids(ids)).to eq meals
+    end
+  end
+
 end

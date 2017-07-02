@@ -22,4 +22,12 @@ RSpec.describe Order, type: :model do
     end
   end
 
+  describe 'decorate errors method' do
+    it 'return list of errors' do
+      order = Order.new
+      order.valid?
+      errors = order.errors.messages.map { |field, message| "#{field.capitalize}: #{message.join(', ')}" }.join('. ')
+      expect(order.decorated_errors).to eq errors
+    end
+  end
 end

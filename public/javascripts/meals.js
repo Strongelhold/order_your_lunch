@@ -1,5 +1,5 @@
-$("#meals tr").click(function() {
-  if(this.classList.contains('selected') == true){
+$('#meals tr').click(function() {
+  if(this.classList.contains('selected') == true) {
     $(this).removeClass('selected');
   } else {
     if($('.selected').length >= 3) {
@@ -23,4 +23,21 @@ $("#meals tr").click(function() {
     alert('You can choose only one item from each course');
     return;
   }
+});
+
+$('#submit').click(function() {
+  if($('.selected').length != 3) {
+    alert('You must choose 3 meals');
+    return false;
+  }
+  var meals = [];
+  $.each($('.selected'), function(i, value) {
+    meals.push('&meals[]=' + $(value).find('td:first').html());
+  });
+
+  var url = $('#submit').attr('href');
+  $.each(meals, function(i, value) {
+    url = url + value;
+  });
+  $('#submit').attr('href', url);
 });

@@ -6,4 +6,8 @@ Rails.application.routes.draw do
   resources :menus, only: %i(index show) do
     resources :meals, only: :index
   end
+
+  resources :users, only: [] do
+    resources :orders, only: :create
+  end
 end

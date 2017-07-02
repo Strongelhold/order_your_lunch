@@ -14,4 +14,8 @@ class Meal < ActiveRecord::Base
   def price=(value)
     self[:price] = value * 100
   end
+
+  def self.find_by_ids(ids)
+    ids.map { |id| find_by(id: id) }
+  end
 end

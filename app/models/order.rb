@@ -6,6 +6,11 @@ class Order < ActiveRecord::Base
   validates :user_id, presence: true
   validates :menu_id, presence: true
   validate :check_meals_uniq, on: :create
+  validate :check_meals_presence, on: :create
+
+  def decorated_errors
+    errors.messages.map { |field, message| "#{field.capitalize}: #{message.join(', ')}" }.join('. ')
+  end
 
   private
 
@@ -15,4 +20,7 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def check_meals_presence
+    errors.add(:meals, "can't be empty") if meals.empty?
+  end
 end

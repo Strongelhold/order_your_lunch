@@ -21,7 +21,7 @@ RSpec.describe 'Meals', type: :feature do
     end
 
     it 'have "Submit" button' do
-      expect(page).to have_button('Submit')
+      expect(page).to have_link('Submit', user_orders_path(menu))
     end
   end
 end
