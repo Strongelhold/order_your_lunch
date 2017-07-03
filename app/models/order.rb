@@ -12,6 +12,10 @@ class Order < ActiveRecord::Base
     errors.messages.map { |field, message| "#{field.capitalize}: #{message.join(', ')}" }.join('. ')
   end
 
+  def user_name
+    user&.name
+  end
+
   private
 
   def check_meals_uniq

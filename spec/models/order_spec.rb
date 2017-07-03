@@ -30,4 +30,11 @@ RSpec.describe Order, type: :model do
       expect(order.decorated_errors).to eq errors
     end
   end
+
+  describe 'user_name method' do
+    let(:order) { build :order }
+    it 'return user name' do
+      expect(order.user_name).to eq order.user.name
+    end
+  end
 end
