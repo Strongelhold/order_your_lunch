@@ -31,10 +31,16 @@ RSpec.describe Order, type: :model do
     end
   end
 
+  let(:order) { create :order}
   describe 'user_name method' do
-    let(:order) { build :order }
     it 'return user name' do
       expect(order.user_name).to eq order.user.name
+    end
+  end
+
+  describe 'total_price method' do
+    it 'return price of all meals in order' do
+      expect(order.total_price).to eq order.meals.map(&:price).reduce(:+)
     end
   end
 end

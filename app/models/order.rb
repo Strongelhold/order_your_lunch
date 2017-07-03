@@ -16,6 +16,10 @@ class Order < ActiveRecord::Base
     user&.name
   end
 
+  def total_price
+    meals.map(&:price).reduce(:+)
+  end
+
   private
 
   def check_meals_uniq
