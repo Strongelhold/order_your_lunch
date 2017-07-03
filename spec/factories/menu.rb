@@ -9,5 +9,11 @@ FactoryGirl.define do
     after (:create) do |menu, evaluator|
       create_list(:meal, evaluator.meals_count, menu: menu)
     end
+
+    factory :menu_with_order do
+      after (:create) do |menu|
+        create(:order, menu: menu)
+      end
+    end
   end
 end

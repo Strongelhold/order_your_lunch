@@ -14,4 +14,8 @@ class Menu < ActiveRecord::Base
       end_of_week: end_of_week)
     .order(:date)
   }
+
+  def orders_total_price
+    orders.map(&:total_price).reduce(:+)
+  end
 end

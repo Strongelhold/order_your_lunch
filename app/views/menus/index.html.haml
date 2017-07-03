@@ -1,2 +1,10 @@
 - @menus.each do |menu|
   %h2= decorate(menu)
+  - if current_user.admin?
+    %table.table.table-hover#orders
+      - menu.orders.each do |order|
+        %tbody
+          %tr
+            %td= order.user_name
+            %td= order.meals.map { |meal| "#{meal.name}(#{meal.course}) #{meal.price}" }.join(', ')
+    %p= "Total: #{menu.orders_total_price}"

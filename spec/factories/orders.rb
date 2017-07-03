@@ -8,10 +8,9 @@ FactoryGirl.define do
     end
 
     before(:create) do |order, evaluator|
-      create_list(:meal, evaluator.meals_count, orders: [order])
-    end
-    before(:build) do |order, evaluator|
-      create_list(:meal, evaluator.meals_count, orders: [order])
+      order.meals << (create :meal, course: 0)
+      order.meals << (create :meal, course: 1)
+      order.meals << (create :meal, course: 2)
     end
   end
 end
