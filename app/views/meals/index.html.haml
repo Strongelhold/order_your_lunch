@@ -7,11 +7,14 @@
         %td= meal.course
         %td= meal.price
 
-= link_to 'Submit', 
-          user_orders_path(current_user, menu_id: params[:menu_id]), 
-          id: 'submit', 
-          class: 'btn btn-primary', 
-          method: :post
+- if current_user.admin? && @menu.date.today?
+  = render 'add_meal_form'
+- else
+  = link_to 'Submit',
+            user_orders_path(current_user, menu_id: params[:menu_id]),
+            id: 'submit',
+            class: 'btn btn-primary',
+            method: :post
 
 %script{type: 'text/javascript',
         src: '/javascripts/meals.js'}
